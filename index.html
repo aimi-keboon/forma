@@ -1,153 +1,395 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FORMA – Verified Network for Trainers</title>
-  <style>
-    :root { --gold: #D4AF37; --gold-soft: #f0c94d; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-    }
-    header, footer {
-      width: 100%;
-    }
-    header {
-      text-align: center;
-      background: radial-gradient(1200px 300px at 50% -50%, rgba(212,175,55,0.15), transparent 60%), linear-gradient(to bottom, #111, #000);
-      border-bottom: 1px solid #222;
-      position: relative;
-      overflow: hidden;
-      padding: 80px 20px 100px; /* Added extra bottom padding */
-    }
-    header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, rgba(212,175,55,0.08), transparent 40%, transparent 60%, rgba(212,175,55,0.08));
-      pointer-events: none;
-    }
-    header img { width: 120px; margin-bottom: 18px; filter: drop-shadow(0 0 12px rgba(212,175,55,0.2)); }
-    nav { display: flex; justify-content: center; gap: 22px; margin-top: 10px; flex-wrap: wrap; }
-    nav a { color: var(--gold); text-decoration: none; font-weight: 500; position: relative; }
-    nav a::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: var(--gold); transition: width .25s; }
-    nav a:hover::after { width: 100%; }
-    h1, h2 { color: var(--gold); font-weight: 700; letter-spacing: .3px; }
-    h1 { font-size: 2.3rem; margin: 0 0 8px; }
-    h2 { font-size: 1.5rem; margin: 0 0 14px; }
-    p { color: #ccc; line-height: 1.75; margin: 0 0 12px; }
+  <head>
+    
 
-    section {
-      max-width: 980px;
-      margin: 60px auto; /* Added vertical spacing between sections and header/footer */
-      padding: 60px 20px;
-    }
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FORMA – Verified Network for Trainers</title>
 
-    /* Lists with icons */
-    ul, ol { padding-left: 0; list-style: none; }
-    li { display: flex; align-items: flex-start; gap: 10px; margin: 10px 0; color: #ccc; }
-    .icon { flex-shrink: 0; width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-top: 2px; }
+<link rel="icon" type="image/png" href="logo.png">
 
-    /* Buttons */
-    .button {
-      display: inline-block; position: relative; overflow: hidden;
-      background-color: var(--gold); color: #000; font-weight: 600;
-      border-radius: 36px; padding: 12px 30px; text-decoration: none; border: 1px solid rgba(212,175,55,.6);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-      box-shadow: 0 8px 24px rgba(212,175,55,.12);
-    }
-    .button:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(212,175,55,.18); background-color: var(--gold-soft); }
+    <style>
+      :root {
+        --gold: #d4af37;
+        --gold-soft: #f0c94d;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+      }
+      header,
+      footer {
+        width: 100%;
+      }
+      header {
+        text-align: center;
+        background: radial-gradient(
+            1200px 300px at 50% -50%,
+            rgba(212, 175, 55, 0.15),
+            transparent 60%
+          ),
+          linear-gradient(to bottom, #111, #000);
+        border-bottom: 1px solid #222;
+        position: relative;
+        overflow: hidden;
+        padding: 80px 20px 100px; /* Added extra bottom padding */
+      }
+      header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          rgba(212, 175, 55, 0.08),
+          transparent 40%,
+          transparent 60%,
+          rgba(212, 175, 55, 0.08)
+        );
+        pointer-events: none;
+      }
+      header img {
+        width: 120px;
+        margin-bottom: 18px;
+        filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.2));
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 22px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+      nav a {
+        color: var(--gold);
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+      }
+      nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: width 0.25s;
+      }
+      nav a:hover::after {
+        width: 100%;
+      }
+      h1,
+      h2 {
+        color: var(--gold);
+        font-weight: 700;
+        letter-spacing: 0.3px;
+      }
+      h1 {
+        font-size: 2.3rem;
+        margin: 0 0 8px;
+      }
+      h2 {
+        font-size: 1.5rem;
+        margin: 0 0 14px;
+      }
+      p {
+        color: #ccc;
+        line-height: 1.75;
+        margin: 0 0 12px;
+      }
 
-    .highlight { color: var(--gold); }
-    .divider { border-top: 1px solid #1a1a1a; margin: 80px 0; }
+      section {
+        max-width: 980px;
+        margin: 60px auto; /* Added vertical spacing between sections and header/footer */
+        padding: 60px 20px;
+      }
 
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
-      border: 1px solid #1f1f1f; border-radius: 14px; padding: 28px; backdrop-filter: blur(2px);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02), 0 10px 30px rgba(0,0,0,0.3);
-    }
+      /* Lists with icons */
+      ul,
+      ol {
+        padding-left: 0;
+        list-style: none;
+      }
+      li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin: 10px 0;
+        color: #ccc;
+      }
+      .icon {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        stroke: var(--gold);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        margin-top: 2px;
+      }
 
-    footer {
-      width: 100%;
-      background: #0d0d0d;
-      border-top: 1px solid #222;
-      text-align: center;
-      color: #888;
-      font-size: 14px;
-      padding: 60px 10px 40px; /* Added top padding */
-      margin-top: 80px; /* Added space before footer */
-    }
+      /* Buttons */
+      .button {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        background-color: var(--gold);
+        color: #000;
+        font-weight: 600;
+        border-radius: 36px;
+        padding: 12px 30px;
+        text-decoration: none;
+        border: 1px solid rgba(212, 175, 55, 0.6);
+        transition: transform 0.2s ease, box-shadow 0.2s ease,
+          background 0.2s ease;
+        box-shadow: 0 8px 24px rgba(212, 175, 55, 0.12);
+      }
+      .button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 28px rgba(212, 175, 55, 0.18);
+        background-color: var(--gold-soft);
+      }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 1.9rem; }
-      h2 { font-size: 1.25rem; }
-      section { padding: 40px 15px; margin: 40px auto; }
-      .card { padding: 22px; }
-      .icon { width: 20px; height: 20px; }
-      nav { gap: 14px; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <img src="forma-logo.png" alt="FORMA Logo">
-    <h1>FORMA – The Verified Trainer Network</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#value">Value</a>
-      <a href="#how">How It Works</a>
-      <a href="#apply">Join</a>
-    </nav>
-    <p style="margin-top:26px; max-width:720px; margin-left:auto; margin-right:auto;">
-      Where certified trainers meet committed clients. <br>
-      FORMA connects verified professionals with people who value consistency, expertise, and measurable results.
-    </p>
-    <a href="https://forms.gle/habaTvp4ReawAbpB8" target="_blank" class="button" style="margin-top:22px;">Join the Waitlist</a>
-  </header>
+      .highlight {
+        color: var(--gold);
+      }
+      .divider {
+        border-top: 1px solid #1a1a1a;
+        margin: 80px 0;
+      }
 
-  <section id="about" class="card">
-    <h2>About FORMA</h2>
-    <p>FORMA is a platform built around professional credibility. Every trainer is verified, ensuring that clients connect only with trusted professionals. It’s not about mass signups — it’s about building a community where reputation matters.</p>
-    <p>Our goal is to strengthen the fitness industry through accountability, transparency, and verified skillsets — allowing professionals to grow without compromising standards.</p>
-  </section>
+      .card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0)
+        );
+        border: 1px solid #1f1f1f;
+        border-radius: 14px;
+        padding: 28px;
+        backdrop-filter: blur(2px);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+          0 10px 30px rgba(0, 0, 0, 0.3);
+      }
 
-  <div class="divider"></div>
+      footer {
+        width: 100%;
+        background: #0d0d0d;
+        border-top: 1px solid #222;
+        text-align: center;
+        color: #888;
+        font-size: 14px;
+        padding: 60px 10px 40px; /* Added top padding */
+        margin-top: 80px; /* Added space before footer */
+      }
 
-  <section id="value" class="card">
-    <h2>The Value We Bring</h2>
-    <ul>
-      <li><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.4 8-7 10-3.6-2-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><span><span class="highlight">For Trainers:</span> Access to clients who prioritize professionalism and results.</span></li>
-      <li><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 11a4 4 0 1 0-8 0 4 4 0 0 0 8 0z"/><path d="M3 20c0-3.3 4.5-5 9-5s9 1.7 9 5"/></svg><span><span class="highlight">For Clients:</span> A curated list of certified trainers vetted for experience and credibility.</span></li>
-      <li><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4l8 4-8 4-8-4 8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 16l8 4 8-4"/></svg><span><span class="highlight">For the Industry:</span> Raising the baseline for trust, safety, and professionalism in fitness training.</span></li>
-    </ul>
-  </section>
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 1.9rem;
+        }
+        h2 {
+          font-size: 1.25rem;
+        }
+        section {
+          padding: 40px 15px;
+          margin: 40px auto;
+        }
+        .card {
+          padding: 22px;
+        }
+        .icon {
+          width: 20px;
+          height: 20px;
+        }
+        nav {
+          gap: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="forma-logo.png" alt="FORMA Logo" />
+      <h1>FORMA – The Verified Trainer Network</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#value">Value</a>
+        <a href="#how">How It Works</a>
+        <a href="#apply">Join</a>
+      </nav>
+      <p
+        style="
+          margin-top: 26px;
+          max-width: 720px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        Where certified trainers meet committed clients. <br />
+        FORMA connects verified professionals with people who value consistency,
+        expertise, and measurable results.
+      </p>
+      <a
+        href="https://forms.gle/habaTvp4ReawAbpB8"
+        target="_blank"
+        class="button"
+        style="margin-top: 22px"
+        >Join the Waitlist</a
+      >
+    </header>
 
-  <div class="divider"></div>
+    <section id="about" class="card">
+      <h2>About FORMA</h2>
+      <p>
+        FORMA is a platform built around professional credibility. Every trainer
+        is verified, ensuring that clients connect only with trusted
+        professionals. It’s not about mass signups — it’s about building a
+        community where reputation matters.
+      </p>
+      <p>
+        Our goal is to strengthen the fitness industry through accountability,
+        transparency, and verified skillsets — allowing professionals to grow
+        without compromising standards.
+      </p>
+    </section>
 
-  <section id="how" class="card">
-    <h2>How It Works</h2>
-    <ol>
-      <li><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3h6l1 2h3v15H5V5h3l1-2z"/><path d="M9 12l2 2 4-4"/></svg><span><span class="highlight">Apply</span> – Submit your information to be part of the early network.</span></li>
-      <li><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3l2.6 2.2L18 6l-.6 3L19 12l-1.6 3 .6 3-3.4 .8L12 21l-2.6-2.2L6 18l.6-3L5 12l1.6-3L6 6l3.4-.8L12 3z"/><path d="M9 12l2 2 4-4"/></svg><span><span class="highlight">Verify</span> – Trainers go through document and experience verification.</span></li>
-      <li><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 3v3M17 3v3M4 8h16v12H4z"/><path d="M8 12h3M13 12h3M8 16h3"/></svg><span><span class="highlight">Connect</span> – Verified professionals appear in the FORMA directory for client discovery.</span></li>
-    </ol>
-  </section>
+    <div class="divider"></div>
 
-  <div class="divider"></div>
+    <section id="value" class="card">
+      <h2>The Value We Bring</h2>
+      <ul>
+        <li>
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 3l7 3v5c0 5-3.4 8-7 10-3.6-2-7-5-7-10V6l7-3z" />
+            <path d="M9 12l2 2 4-4" /></svg
+          ><span
+            ><span class="highlight">For Trainers:</span> Access to clients who
+            prioritize professionalism and results.</span
+          >
+        </li>
+        <li>
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path d="M16 11a4 4 0 1 0-8 0 4 4 0 0 0 8 0z" />
+            <path d="M3 20c0-3.3 4.5-5 9-5s9 1.7 9 5" /></svg
+          ><span
+            ><span class="highlight">For Clients:</span> A curated list of
+            certified trainers vetted for experience and credibility.</span
+          >
+        </li>
+        <li>
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 4l8 4-8 4-8-4 8-4z" />
+            <path d="M4 12l8 4 8-4" />
+            <path d="M4 16l8 4 8-4" /></svg
+          ><span
+            ><span class="highlight">For the Industry:</span> Raising the
+            baseline for trust, safety, and professionalism in fitness
+            training.</span
+          >
+        </li>
+      </ul>
+    </section>
 
-  <section id="apply" class="card" style="text-align:center;">
-    <h2>Join the Verified Network</h2>
-    <p>We’re opening early access for trainers who value credibility over volume. If you believe in standards, this is where you belong.</p>
-    <a href="https://forms.gle/habaTvp4ReawAbpB8" target="_blank" class="button">Join the Waitlist</a>
-  </section>
+    <div class="divider"></div>
 
-  <footer>
-    <p>© <script>document.write(new Date().getFullYear());</script> FORMA. All rights reserved.</p>
-    <p>Contact: <a href="mailto:admin@myformafitness.com" style="color:var(--gold); text-decoration:none;">admin@myformafitness.com</a></p>
-  </footer>
-</body>
+    <section id="how" class="card">
+      <h2>How It Works</h2>
+      <ol>
+        <li>
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path d="M9 3h6l1 2h3v15H5V5h3l1-2z" />
+            <path d="M9 12l2 2 4-4" /></svg
+          ><span
+            ><span class="highlight">Apply</span> – Submit your information to
+            be part of the early network.</span
+          >
+        </li>
+        <li>
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 3l2.6 2.2L18 6l-.6 3L19 12l-1.6 3 .6 3-3.4 .8L12 21l-2.6-2.2L6 18l.6-3L5 12l1.6-3L6 6l3.4-.8L12 3z"
+            />
+            <path d="M9 12l2 2 4-4" /></svg
+          ><span
+            ><span class="highlight">Verify</span> – Trainers go through
+            document and experience verification.</span
+          >
+        </li>
+        <li>
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path d="M7 3v3M17 3v3M4 8h16v12H4z" />
+            <path d="M8 12h3M13 12h3M8 16h3" /></svg
+          ><span
+            ><span class="highlight">Connect</span> – Verified professionals
+            appear in the FORMA directory for client discovery.</span
+          >
+        </li>
+      </ol>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="apply" class="card" style="text-align: center">
+      <h2>Join the Verified Network</h2>
+      <p>
+        We’re opening early access for trainers who value credibility over
+        volume. If you believe in standards, this is where you belong.
+      </p>
+      <a
+        href="https://forms.gle/habaTvp4ReawAbpB8"
+        target="_blank"
+        class="button"
+        >Join the Waitlist</a
+      >
+    </section>
+
+    <footer>
+      <p>
+        ©
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        FORMA. All rights reserved.
+      </p>
+      <p>
+        Contact:
+        <a
+          href="mailto:admin@myformafitness.com"
+          style="color: var(--gold); text-decoration: none"
+          >admin@myformafitness.com</a
+        >
+      </p>
+    </footer>
+  </body>
 </html>
